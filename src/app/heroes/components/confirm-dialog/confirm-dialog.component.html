@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Delete Windows</h2>
+<mat-dialog-content>
+  Este proceso es Irreversible, Would you like to delete {{ data.superhero }} ?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-button
+    mat-dialog-close
+    (click)="onNoClick()">
+    No</button>
+  <button
+    mat-button
+    mat-dialog-close
+    cdkFocusInitial
+    (click)="onConfirm()">
+    Yes</button>
+</mat-dialog-actions>
+

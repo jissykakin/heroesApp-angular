@@ -1,0 +1,75 @@
+<ng-template #divLoading>
+  <mat-grid-list cols="1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+
+<div *ngIf="hero; else divLoading" class="grid  p-3">
+
+<div class="col-12 sm:col-4 ">
+  <mat-card class="m-2 p-3">
+    <img mat-card-image [src]=" hero | heroImage " [alt]="hero.superhero" />
+
+    <mat-divider></mat-divider>
+
+    <mat-card-subtitle align="end">
+       Código: {{ hero.id }}
+    </mat-card-subtitle>
+  </mat-card>
+
+</div>
+
+<div class="col-12 sm:col-8 ">
+  <mat-card class="m-2 p-3">
+    <mat-card-header class="mb-2">
+      <mat-card-title> {{ hero.superhero }} </mat-card-title>
+      <mat-card-subtitle> {{ hero.alter_ego }} </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item><strong>Primera aparición: </strong>   {{ hero.first_appearance }} </mat-list-item>
+        <mat-list-item><strong>Nombre Nacimiento: </strong>   {{ hero.alter_ego }} </mat-list-item>
+        <mat-list-item> <strong>Editorial: </strong> {{ hero.publisher }} </mat-list-item>
+        <mat-list-item><strong>Personajes: </strong> {{ hero.characters }} </mat-list-item>
+
+      </mat-list>
+    </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions align="end">
+    <button mat-button
+    mat-raised
+    color="primary"
+    [routerLink]="['/heroes/edit', hero.id]">
+    <mat-icon> edit </mat-icon>
+    Editar
+    </button>
+
+    <button mat-button
+    mat-raised
+    (click)="goBack()"
+    [routerLink]="['/heroes/edit', hero.id]">
+    <mat-icon> back </mat-icon>
+      Regresar
+    </button>
+
+  </mat-card-actions>
+
+
+
+  </mat-card>
+
+</div>
+
+
+
+
+
+
+
+</div>

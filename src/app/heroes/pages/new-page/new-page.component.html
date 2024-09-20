@@ -1,0 +1,97 @@
+<h1 class="mt-2 ml-2">
+  {{ (currentHero.id) ? 'Editar' : 'Agregar'  }}
+   Héroe
+</h1>
+
+<mat-divider></mat-divider>
+
+<div class="grid">
+
+  <div class="col-12 sm:col-6">
+
+    <mat-card class="m-3">
+      <img class="p-3" [src]="currentHero | heroImage " alt="" mat-card-image>
+    </mat-card>
+
+  </div>
+
+  <div class="col-12 sm:col-6">
+    <mat-card class="m-3">
+      <mat-card-content>
+        <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="col-12 sm:col-6" >
+            <mat-label> Super Héroe</mat-label>
+            <input
+            matInput required
+            formControlName="superhero"
+            type="text"/>
+          </mat-form-field>
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Alter Ego</mat-label>
+            <input
+            matInput required type="text"
+            formControlName="alter_ego"/>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label> Primera Aparición</mat-label>
+            <input
+            matInput required type="text"
+            formControlName="first_appearance"/>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Personajes</mat-label>
+            <input
+            matInput required type="text"
+            formControlName="characters"/>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label> Creador</mat-label>
+            <mat-select
+              formControlName="publisher"
+              required>
+              <mat-option
+               *ngFor="let publisher of publishers"
+                [value]="publisher.id">
+                {{ publisher.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Alternative Image</mat-label>
+            <input
+            matInput type="text"
+            formControlName="alt_img"/>
+          </mat-form-field>
+
+
+
+        </form>
+        <mat-divider ></mat-divider>
+        <mat-card-actions align="end" class="mt-2">
+
+
+          <button mat-flat-button
+          (click)="onDeleteHero()"
+          color="warn"
+           *ngIf="currentHero.id"
+            >
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+          <span class="spacer"></span>
+          <button mat-raised-button color="primary"
+          (click)="onSubmit()">
+            <mat-icon>save</mat-icon>
+            Guardar
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+</div>
